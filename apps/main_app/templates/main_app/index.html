@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index</title>
+    <link rel="stylesheet" href="{% static 'main_app/css/style.css' %}">
+  </head>
+  <body>
+
+<div id="container">
+<div id="front_message">
+
+
+<h1>Good morning, {{admin.username}}!</h1>
+<h2>Today's Challenges:</h2>
+</div>
+
+<div id="mission_container">
+<ol>
+{% for mission in missions %}
+<div id="mission">
+  <li>
+   <ul>{{mission.status}} </ul>
+   <ul><h2>{{mission.name}} </h2>Difficulty: {{mission.rating}}</ul>
+   <ul>{{mission.description}}</ul>
+</div>
+<div id="submit">
+
+ <form  action="{% url mission:submit_mission$}" method="post">
+</div>
+
+{% csrf_token %}
+  <input type="file" name="pic" accept="image/*">
+  <input type="submit" value="Submit">
+</form></li>
+{% endfor %}
+</ol>
+</div>
+
+<div id="total_score">
+  <h2>Total: {{team.score}}</h2>
+</div>
+
+<div class="meter">
+  <span style="width: 50%"></span>
+</div>
+
+</div>
+
+  </body>
+</html>

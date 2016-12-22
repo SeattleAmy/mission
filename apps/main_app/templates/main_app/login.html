@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>login</title>
+  </head>
+  <body>
+    <p>
+      login
+    </p>
+    <form action="{% url 'mission:login'%}" method="post">
+      {% csrf_token%}
+    <p>Team Name : <input type="text" name="team_name"></p>
+    <p>Password : <input type="text" name="password" ></p>
+    </form>
+
+    <!-- <form action="{% url 'mission:registration'%}" method="post">
+      {% csrf_token%}
+      <p>User Name</p>
+      <p></p>
+      <p></p>
+      <p></p>
+
+    </form> -->
+  </body>
+</html>
