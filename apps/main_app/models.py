@@ -51,5 +51,6 @@ class Mission(models.Model):
     rating = models.IntegerField()
     admin = models.ForeignKey(Admin)
     teams = models.ManyToManyField(Team, related_name = "current_missions")
+    status = models.CharField(max_length = 255, default = "incomplete")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

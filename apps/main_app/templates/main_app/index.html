@@ -22,13 +22,11 @@
 <div id="mission">
   <li>
    <ul>{{mission.status}} </ul>
-   <ul><h2>{{mission.name}} </h2>Difficulty: {{mission.rating}}</ul>
+   <ul><h2>{{mission.id}}{{mission.name}} </h2>Difficulty: {{mission.rating}}</ul>
    <ul>{{mission.description}}</ul>
 </div>
 <div id="submit">
-
- <form  action="{% url mission:submit_mission$}" method="post">
-</div>
+ <form  action="{% url 'mission:submit_mission' id=mission.id%}" method="post">
 
 {% csrf_token %}
   <input type="file" name="pic" accept="image/*">
@@ -38,12 +36,15 @@
 </ol>
 </div>
 
+</div>
+
 <div id="total_score">
-  <h2>Total: {{team.score}}</h2>
+  <h2>Total: {{request.session.total_score}}</h2>
+  <a href="{% url 'mission:reset' %}"><button>Reset</button></a>
 </div>
 
 <div class="meter">
-  <span style="width: 50%"></span>
+  <span style="width: {{request.session.total_score}}%"></span>
 </div>
 
 </div>
